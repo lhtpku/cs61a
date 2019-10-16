@@ -34,6 +34,9 @@ def product(n, term):
     162
     """
     "*** YOUR CODE HERE ***"
+    if n == 1:
+        return term(1)
+    return mul(term(n),product(n-1,term))
 
 def accumulate(combiner, base, n, term):
     """Return the result of combining the first n terms in a sequence and base.
@@ -54,6 +57,9 @@ def accumulate(combiner, base, n, term):
     19
     """
     "*** YOUR CODE HERE ***"
+    if n == 0:
+        return base
+    return combiner(term(n), accumulate(combiner, base, n-1, term))
 
 def summation_using_accumulate(n, term):
     """Returns the sum of term(1) + ... + term(n). The implementation
@@ -70,6 +76,7 @@ def summation_using_accumulate(n, term):
     True
     """
     "*** YOUR CODE HERE ***"
+    return accumulate(add, 0, n, term)
 
 def product_using_accumulate(n, term):
     """An implementation of product using accumulate.
@@ -85,6 +92,7 @@ def product_using_accumulate(n, term):
     True
     """
     "*** YOUR CODE HERE ***"
+    return accumulate(mul, 1, n, term)
 
 def compose1(f, g):
     """Return a function h, such that h(x) = f(g(x))."""
@@ -108,7 +116,15 @@ def make_repeater(f, n):
     5
     """
     "*** YOUR CODE HERE ***"
-
+    if n == 0:
+        return identity
+    elif n == 1:
+        return f
+    elif n%2 == 1:
+        return compose1(f, make_repeater(f, n-1))
+    else:
+        tmp_func = make_repeater(f,n//2)
+        return compose1(tmp_func,tmp_func)
 
 ##########################
 # Just for fun Questions #
@@ -123,10 +139,12 @@ def successor(n):
 def one(f):
     """Church numeral 1: same as successor(zero)"""
     "*** YOUR CODE HERE ***"
+    return successor(zero)
 
 def two(f):
     """Church numeral 2: same as successor(successor(zero))"""
     "*** YOUR CODE HERE ***"
+    return make_repeater(one,2)
 
 three = successor(two)
 
@@ -143,6 +161,7 @@ def church_to_int(n):
     3
     """
     "*** YOUR CODE HERE ***"
+    return 
 
 def add_church(m, n):
     """Return the Church numeral for m + n, for Church numerals m and n.

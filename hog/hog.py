@@ -120,6 +120,7 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
     player = 0  # Which player is about to take a turn, 0 (first) or 1 (second)
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    ## this function can be short theoretically.
     num0_prev = num1_prev = 0
     while score0<goal and score1<goal:
 
@@ -130,12 +131,10 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
             score0 = score0+3 if abs(num0-num0_prev)==2 else score0
             num0_prev = num0
 
-        if is_swap(score0,score1):
-            score0,score1 = score1,score0
-        # print(score0,score1)
+        
         if score0>=goal or score1>=goal:
             break
-
+        #################################
         num1 = strategy1(score1,score0)
         score1 += take_turn(num1, score0, dice)
 
@@ -143,10 +142,10 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
             score1 = score1+3 if abs(num1-num1_prev)==2 else score1
             num1_prev = num1
 
-        # print(score0,score1)
         if is_swap(score0,score1):
             score0,score1 = score1,score0
-        # print(score0,score1)
+
+        say = say(score0,score1)
     # END PROBLEM 5
     # (note that the indentation for the problem 6 prompt (***YOUR CODE HERE***) might be misleading)
     # BEGIN PROBLEM 6
@@ -237,6 +236,14 @@ def announce_highest(who, previous_high=0, previous_score=0):
     assert who == 0 or who == 1, 'The who argument should indicate a player.'
     # BEGIN PROBLEM 7
     "*** YOUR CODE HERE ***"
+    def high(score0, score1):
+        score = score0 if who==0 else score1
+        delta = (score - previous_score) - previous_high
+        current_high = previous_high if delta<=0 else score - previous_score
+        if delta > 0:
+            print("%s point(s)! That's the biggest gain yet for Player %s" %(current_high,who))
+        return announce_highest(who, current_high, score)
+    return high
     # END PROBLEM 7
 
 

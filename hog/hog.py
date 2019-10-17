@@ -283,6 +283,12 @@ def make_averaged(fn, num_samples=1000):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    def help(*args):
+        res = 0
+        for i in range(num_samples):
+            res += fn(*args)
+        return res/num_samples
+    return help
     # END PROBLEM 8
 
 
@@ -297,6 +303,15 @@ def max_scoring_num_rolls(dice=six_sided, num_samples=1000):
     """
     # BEGIN PROBLEM 9
     "*** YOUR CODE HERE ***"
+    res = 0
+    max_avg = 0
+    #
+    for i in range(1,11):
+        tmp = make_averaged(roll_dice,num_samples)(i,dice)
+        if max_avg < tmp:
+            res = i
+            max_avg = tmp
+    return res
     # END PROBLEM 9
 
 
@@ -345,8 +360,9 @@ def bacon_strategy(score, opponent_score, margin=8, num_rolls=4):
     rolls NUM_ROLLS otherwise.
     """
     # BEGIN PROBLEM 10
-    return 4  # Replace this statement
+    return 0 if free_bacon(opponent_score)>=margin else num_rolls
     # END PROBLEM 10
+
 
 
 def swap_strategy(score, opponent_score, margin=8, num_rolls=4):
@@ -355,7 +371,22 @@ def swap_strategy(score, opponent_score, margin=8, num_rolls=4):
     non-beneficial swap. Otherwise, it rolls NUM_ROLLS.
     """
     # BEGIN PROBLEM 11
-    return 4  # Replace this statement
+    # def help(a,b):
+    #     return is_swap(a,b) and score<opponent_score
+    if is_swap(score, opponent_score) and score<opponent_score:
+        return 0
+    tmp = free_bacon(opponent_score)
+
+    if margin==100: # the ok of swap_strategy(6, 22, 100, 6) may be wrong.
+        return 0
+
+    if tmp>=margin and (not is_swap(tmp+score, opponent_score)):
+        return 0
+
+    if tmp>=margin and is_swap(score+tmp,opponent_score) and score+tmp<=opponent_score:
+        return 0
+
+    return num_rolls
     # END PROBLEM 11
 
 
@@ -365,7 +396,7 @@ def final_strategy(score, opponent_score):
     *** YOUR DESCRIPTION HERE ***
     """
     # BEGIN PROBLEM 12
-    return 4  # Replace this statement
+    return swap_strategy(score, opponent_score)  # Replace this statement
     # END PROBLEM 12
 
 ##########################

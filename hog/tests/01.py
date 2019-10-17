@@ -7,43 +7,72 @@ test = {
         {
           'code': r"""
           >>> roll_dice(2, make_test_dice(4, 6, 1))
+<<<<<<< HEAD
           70e71b420a966665c548a3bb2cb30d7d
           # locked
           """,
           'hidden': False,
           'locked': True
+=======
+          10
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         },
         {
           'code': r"""
           >>> roll_dice(3, make_test_dice(4, 6, 1))
+<<<<<<< HEAD
           43d176e102c8d95338faf8791aa509b3
           # locked
           """,
           'hidden': False,
           'locked': True
+=======
+          1
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         },
         {
           'code': r"""
           >>> roll_dice(4, make_test_dice(2, 2, 3))
+<<<<<<< HEAD
           872dbe4a4fe5d8451aa842c21194c866
           # locked
           """,
           'hidden': False,
           'locked': True
+=======
+          9
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         },
         {
           'code': r"""
           >>> roll_dice(4, make_test_dice(1, 2, 3))
+<<<<<<< HEAD
           43d176e102c8d95338faf8791aa509b3
           # locked
           """,
           'hidden': False,
           'locked': True
+=======
+          1
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         },
         {
           'code': r"""
           >>> counted_dice = make_test_dice(4, 1, 2, 6)
           >>> roll_dice(3, counted_dice)
+<<<<<<< HEAD
           43d176e102c8d95338faf8791aa509b3
           # locked
           >>> roll_dice(1, counted_dice)  # Make sure you call dice exactly num_rolls times!
@@ -52,10 +81,19 @@ test = {
           """,
           'hidden': False,
           'locked': True
+=======
+          1
+          >>> roll_dice(1, counted_dice)  # Make sure you call dice exactly num_rolls times!
+          6
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         },
         {
           'code': r"""
           >>> roll_dice(9, make_test_dice(6))
+<<<<<<< HEAD
           72862184559d57299206f055e2cc5a63
           # locked
           >>> roll_dice(7, make_test_dice(2, 2, 2, 2, 2, 2, 1))
@@ -64,6 +102,14 @@ test = {
           """,
           'hidden': False,
           'locked': True
+=======
+          54
+          >>> roll_dice(7, make_test_dice(2, 2, 2, 2, 2, 2, 1))
+          1
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         }
       ],
       'scored': True,

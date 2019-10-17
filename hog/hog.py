@@ -23,6 +23,17 @@ def roll_dice(num_rolls, dice=six_sided):
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
     # END PROBLEM 1
+<<<<<<< HEAD
+=======
+    res = 0
+    flag = False
+    for i in range(num_rolls):
+        tmp = dice()
+        if tmp == 1:
+            flag = True
+        res += tmp
+    return 1 if flag == True else res
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
 
 
 def free_bacon(score):
@@ -34,6 +45,10 @@ def free_bacon(score):
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
     # END PROBLEM 2
+<<<<<<< HEAD
+=======
+    return 10 - min(score//10,score%10)
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
 
 
 def take_turn(num_rolls, opponent_score, dice=six_sided):
@@ -52,7 +67,21 @@ def take_turn(num_rolls, opponent_score, dice=six_sided):
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
     # END PROBLEM 3
+<<<<<<< HEAD
 
+=======
+    if num_rolls == 0:
+        return free_bacon(opponent_score)
+    return roll_dice(num_rolls,dice)
+
+def swap_score(score):
+    if score<10:
+        return score*score
+    elif score<100:
+        return (score//10)*(score%10)
+    else:
+        return (score//100)*(score%10)
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
 
 def is_swap(player_score, opponent_score):
     """
@@ -60,6 +89,10 @@ def is_swap(player_score, opponent_score):
     """
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+<<<<<<< HEAD
+=======
+    return swap_score(player_score)==swap_score(opponent_score)
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
     # END PROBLEM 4
 
 
@@ -100,6 +133,36 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
     player = 0  # Which player is about to take a turn, 0 (first) or 1 (second)
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+<<<<<<< HEAD
+=======
+    num0_prev = num1_prev = 0
+    while score0<goal and score1<goal:
+
+        num0 = strategy0(score0,score1)
+        score0 += take_turn(num0, score1, dice)
+
+        if feral_hogs == True:
+            score0 = score0+3 if abs(num0-num0_prev)==2 else score0
+            num0_prev = num0
+
+        if is_swap(score0,score1):
+            score0,score1 = score1,score0
+        # print(score0,score1)
+        if score0>=goal or score1>=goal:
+            break
+
+        num1 = strategy1(score1,score0)
+        score1 += take_turn(num1, score0, dice)
+
+        if feral_hogs == True:
+            score1 = score1+3 if abs(num1-num1_prev)==2 else score1
+            num1_prev = num1
+
+        # print(score0,score1)
+        if is_swap(score0,score1):
+            score0,score1 = score1,score0
+        # print(score0,score1)
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
     # END PROBLEM 5
     # (note that the indentation for the problem 6 prompt (***YOUR CODE HERE***) might be misleading)
     # BEGIN PROBLEM 6

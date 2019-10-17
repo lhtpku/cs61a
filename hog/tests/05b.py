@@ -9,6 +9,7 @@ test = {
           >>> # example 1
           >>> s0, s1 = hog.play(lambda score, other: (score + 3) // 4 * 2 + 3, lambda score, other: 4 - other // 4 * 2, score0=0, score1=0, goal=10, dice=always_one)
           >>> s0
+<<<<<<< HEAD
           872dbe4a4fe5d8451aa842c21194c866
           # locked
           >>> s1
@@ -17,12 +18,21 @@ test = {
           """,
           'hidden': False,
           'locked': True
+=======
+          9
+          >>> s1
+          18
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         },
         {
           'code': r"""
           >>> # example 2
           >>> s0, s1 = hog.play(always(2), always(1), score0=0, score1=0, goal=5, dice=hog.make_test_dice(2, 2))
           >>> s0
+<<<<<<< HEAD
           c42887e7b9ffe8fc26bb57b61329f916
           # locked
           >>> s1
@@ -31,12 +41,21 @@ test = {
           """,
           'hidden': False,
           'locked': True
+=======
+          7
+          >>> s1
+          0
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         },
         {
           'code': r"""
           >>> # swap after feral hogs
           >>> s0, s1 = hog.play(always(2), always(1), score0=45, score1=5, goal=50, dice=hog.make_test_dice(5, 2))
           >>> s0
+<<<<<<< HEAD
           26f5762c932a578994ea1c8fc7fa6c02
           # locked
           >>> s1
@@ -45,6 +64,14 @@ test = {
           """,
           'hidden': False,
           'locked': True
+=======
+          5
+          >>> s1
+          55
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         }
       ],
       'scored': True,

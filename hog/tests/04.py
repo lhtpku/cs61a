@@ -7,101 +7,178 @@ test = {
         {
           'code': r"""
           >>> is_swap(2, 4)
+<<<<<<< HEAD
           d763fd836a7bfb096222e985b161b406
           # locked
           """,
           'hidden': False,
           'locked': True
+=======
+          False
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         },
         {
           'code': r"""
           >>> is_swap(22, 4)
+<<<<<<< HEAD
           d763fd836a7bfb096222e985b161b406
           # locked
           """,
           'hidden': False,
           'locked': True
+=======
+          False
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         },
         {
           'code': r"""
           >>> is_swap(28, 4)
+<<<<<<< HEAD
           bc6c4798917b91886d7fa5f56e42878f
           # locked
           """,
           'hidden': False,
           'locked': True
+=======
+          True
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         },
         {
           'code': r"""
           >>> is_swap(124, 2)
+<<<<<<< HEAD
           bc6c4798917b91886d7fa5f56e42878f
           # locked
           """,
           'hidden': False,
           'locked': True
+=======
+          True
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         },
         {
           'code': r"""
           >>> is_swap(44, 28)
+<<<<<<< HEAD
           bc6c4798917b91886d7fa5f56e42878f
           # locked
           """,
           'hidden': False,
           'locked': True
+=======
+          True
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         },
         {
           'code': r"""
           >>> is_swap(2, 0)
+<<<<<<< HEAD
           d763fd836a7bfb096222e985b161b406
           # locked
           """,
           'hidden': False,
           'locked': True
+=======
+          False
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         },
         {
           'code': r"""
           >>> is_swap(10, 0)
+<<<<<<< HEAD
           bc6c4798917b91886d7fa5f56e42878f
           # locked
           """,
           'hidden': False,
           'locked': True
+=======
+          True
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         },
         {
           'code': r"""
           >>> is_swap(100, 10)
+<<<<<<< HEAD
           bc6c4798917b91886d7fa5f56e42878f
           # locked
           """,
           'hidden': False,
           'locked': True
+=======
+          True
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         },
         {
           'code': r"""
           >>> is_swap(14, 2)
+<<<<<<< HEAD
           bc6c4798917b91886d7fa5f56e42878f
           # locked
           """,
           'hidden': False,
           'locked': True
+=======
+          True
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         },
         {
           'code': r"""
           >>> is_swap(27, 72)
+<<<<<<< HEAD
           bc6c4798917b91886d7fa5f56e42878f
           # locked
           """,
           'hidden': False,
           'locked': True
+=======
+          True
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         },
         {
           'code': r"""
           >>> is_swap(104, 2)
+<<<<<<< HEAD
           bc6c4798917b91886d7fa5f56e42878f
           # locked
           """,
           'hidden': False,
           'locked': True
+=======
+          True
+          """,
+          'hidden': False,
+          'locked': False
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114
         },
         {
           'code': r"""

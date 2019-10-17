@@ -472,6 +472,10 @@ def run(*args):
     args = parser.parse_args()
     global DELAY
     DELAY = args.delay * 1000
+<<<<<<< HEAD
     run_GUI(computer=args.final)
 
     
+=======
+    run_GUI(computer=args.final)
+>>>>>>> e7034346cae1713d6ecd4ebb127a60e2a131e114

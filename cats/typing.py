@@ -91,6 +91,11 @@ def autocorrect(user_word, valid_words, diff_function, limit):
     """
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    if user_word in valid_words:
+        return user_word
+    tmp = {valid_word:diff_function(user_word,valid_word,limit) for valid_word in valid_words}
+    tmp[user_word] = limit
+    return min(tmp, key=lambda k:tmp[k])
     # END PROBLEM 5
 
 
@@ -100,26 +105,40 @@ def swap_diff(start, goal, limit):
     their lengths.
     """
     # BEGIN PROBLEM 6
-    assert False, 'Remove this line'
+    # assert False, 'Remove this line'
+    a = len(start)
+    b = len(goal)
+    tmp_limit = limit
+    if limit<0:
+        return tmp_limit+1
+
+    if a*b==0:
+        return a or b
+    ##
+    tmp = (start[0]!=goal[0])
+    k = limit-1 if tmp==1 else limit
+    return tmp+swap_diff(start[1:], goal[1:], k)
     # END PROBLEM 6
 
 def edit_diff(start, goal, limit):
     """A diff function that computes the edit distance from START to GOAL."""
-    assert False, 'Remove this line'
+    # assert False, 'Remove this line'
 
-    if ______________: # Fill in the condition
+    if len(start)==0: # Fill in the condition
         # BEGIN
         "*** YOUR CODE HERE ***"
+        return len(goal)
         # END
 
-    elif ___________: # Feel free to remove or add additional cases
+    elif len(goal)==0: # Feel free to remove or add additional cases
         # BEGIN
         "*** YOUR CODE HERE ***"
+        return len(start)
         # END
 
     else:
-        add_diff = ...  # Fill in these lines
-        remove_diff = ... 
+        add_diff = max(len(goal)-len(start),0)  # Fill in these lines
+        remove_diff = max(len(start)-len(goal),0)
         substitute_diff = ... 
         # BEGIN
         "*** YOUR CODE HERE ***"

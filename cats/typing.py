@@ -124,6 +124,8 @@ def edit_diff(start, goal, limit):
     """A diff function that computes the edit distance from START to GOAL."""
     # assert False, 'Remove this line'
 
+    # sorry, i can not solve this question right now.
+
     if len(start)==0: # Fill in the condition
         # BEGIN
         "*** YOUR CODE HERE ***"
@@ -161,6 +163,14 @@ def report_progress(typed, prompt, id, send):
     """Send a report of your id and progress so far to the multiplayer server."""
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    i = 0
+    j = len(prompt)
+    while (i<=j) and (i<len(typed)):
+        if typed[i] != prompt[i]:
+            break
+        i += 1
+    send({'id': id, 'progress': i/j})
+    return i/j
     # END PROBLEM 8
 
 
@@ -182,6 +192,22 @@ def fastest_words(word_times, margin=1e-5):
     assert margin > 0
     # BEGIN PROBLEM 9
     "*** YOUR CODE HERE ***"
+    ## without pandas, this ans is complex, perhaps there is an easier way to solve the question.
+    used_time = []
+    for i in range(n_players):
+        used_time.append([])
+        for j in range(n_words):
+            used_time[-1].append([word(word_times[i][j+1]), elapsed_time(word_times[i][j+1])-elapsed_time(word_times[i][j])])
+    ###
+    res = [[] for i in range(n_players)]
+
+    for j in range(n_words):
+        tmp = [used_time[i][j][1] for i in range(n_players)]
+        word_min = min(tmp)
+        for i in range(n_players):
+            if used_time[i][j][1] <= word_min+margin:
+                res[i].append(used_time[i][j][0])
+    return res
     # END PROBLEM 9
 
 

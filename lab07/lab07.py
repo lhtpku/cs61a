@@ -83,6 +83,7 @@ def cumulative_sum(t):
     # t.label += sum([sum(b.label) for b in t.branches])
 
 ###############################
+# my method for bst_min & bst_max 
 # def bst_min(t):
 #     if t.is_leaf():
 #         return t.label

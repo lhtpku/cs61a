@@ -72,17 +72,14 @@ class Place(object):
             # BEGIN Problem 13
             "*** YOUR CODE HERE ***"
             if isinstance(insect, QueenAnt) and insect.order==0:
-                # print('******************')
-                pass
-            # END Problem 13
-
-            # Special handling for container ants
-            elif self.ant is insect:
+                return
+            if self.ant is insect:
                 # Bodyguard was removed. Contained ant should remain in the game
                 if hasattr(self.ant, 'is_container') and self.ant.is_container:
                     self.ant = self.ant.contained_ant
                 else:
                     self.ant = None
+                insect.place = None
             else:
                 # Contained ant was removed. Bodyguard should remain
                 if hasattr(self.ant, 'is_container') and self.ant.is_container \
@@ -514,7 +511,7 @@ class QueenAnt(ScubaThrower):  # You should change this line
         """
         # BEGIN Problem 13
         "*** YOUR CODE HERE ***"
-        place = self.place
+        place = self.place.exit
         if self.order > 0:
             Ant.reduce_armor(self,self.armor)
             return
@@ -522,24 +519,21 @@ class QueenAnt(ScubaThrower):  # You should change this line
         ThrowerAnt.action(self, colony)
 
         while place is not None:
-            # if place.ant is None:
-            #     pass
 
-            # elif (not place.ant.is_container) and (not place.ant.has_doubled) and (not isinstance(place.ant, QueenAnt)):
-
-
-
-            if (place.ant is not None) and (not place.ant.has_doubled) and (not isinstance(place.ant, QueenAnt)):
+            if place.ant is None:
+                place = place.exit
+                continue
+            if not place.ant.has_doubled:
                 place.ant.damage *= 2
                 place.ant.has_doubled = True
-                ##########
-                if place.ant.is_container and place.ant.contained_ant and (not place.ant.contained_ant.has_doubled) and (not isinstance(place.ant.contained_ant, QueenAnt)):
-                    place.ant.contained_ant.damage *= 2
-                    place.ant.contained_ant.has_doubled = True
-            # for bee in place.bees:
-            #     Insect.reduce_armor(bee, damage)
+
+            if place.ant.is_container and place.ant.contained_ant and (not place.ant.contained_ant.has_doubled):
+                place.ant.contained_ant.damage *= 2
+                place.ant.contained_ant.has_doubled = True
 
             place = place.exit
+            
+            
         # END Problem 13
 
     def reduce_armor(self, amount):
@@ -597,7 +591,8 @@ class SlowThrower(ThrowerAnt):
 
     name = 'Slow'
     # BEGIN Problem EC
-    implemented = False   # Change to True to view in the GUI
+    implemented = True   # Change to True to view in the GUI
+    food_cost = 4
     # END Problem EC
 
     def throw_at(self, target):
@@ -610,7 +605,8 @@ class ScaryThrower(ThrowerAnt):
 
     name = 'Scary'
     # BEGIN Problem EC
-    implemented = False   # Change to True to view in the GUI
+    implemented = True   # Change to True to view in the GUI
+    food_cost = 6
     # END Problem EC
 
     def throw_at(self, target):

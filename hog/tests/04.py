@@ -7,56 +7,114 @@ test = {
         {
           'code': r"""
           >>> is_swap(2, 4)
-          d763fd836a7bfb096222e985b161b406
-          # locked
+          False
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(22, 4)
+          False
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(28, 4)
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(124, 2)
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(44, 28)
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(2, 0)
+          False
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(10, 0)
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(100, 10)
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(14, 2)
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(27, 72)
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(104, 2)
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(66, 6)
+          True
+          """,
+          'hidden': False,
+          'locked': False
         },
         {
           'code': r"""
           >>> is_swap(11, 1)
-          d763fd836a7bfb096222e985b161b406
-          # locked
+          True
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
-          >>> is_swap(1, 0)
-          bc6c4798917b91886d7fa5f56e42878f
-          # locked
+          >>> is_swap(13, 301)
+          True
           """,
           'hidden': False,
-          'locked': True
-        },
-        {
-          'code': r"""
-          >>> is_swap(23, 4)
-          bc6c4798917b91886d7fa5f56e42878f
-          # locked
-          """,
-          'hidden': False,
-          'locked': True
-        },
-        {
-          'code': r"""
-          >>> is_swap(10, 3)
-          d763fd836a7bfb096222e985b161b406
-          # locked
-          """,
-          'hidden': False,
-          'locked': True
-        },
-        {
-          'code': r"""
-          >>> is_swap(92, 3)
-          d763fd836a7bfb096222e985b161b406
-          # locked
-          """,
-          'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
@@ -68,7 +126,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(398, 562)
+          >>> is_swap(777, 707)
           True
           """,
           'hidden': False,
@@ -100,7 +158,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(743, 958)
+          >>> is_swap(670, 720)
           True
           """,
           'hidden': False,
@@ -116,7 +174,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(535, 584)
+          >>> is_swap(444, 44)
           True
           """,
           'hidden': False,
@@ -124,7 +182,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(133, 986)
+          >>> is_swap(530, 270)
           True
           """,
           'hidden': False,
@@ -140,7 +198,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(574, 545)
+          >>> is_swap(290, 360)
           True
           """,
           'hidden': False,
@@ -148,7 +206,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(91, 337)
+          >>> is_swap(326, 683)
           True
           """,
           'hidden': False,
@@ -156,7 +214,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(459, 630)
+          >>> is_swap(352, 146)
           True
           """,
           'hidden': False,
@@ -172,7 +230,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(761, 358)
+          >>> is_swap(57, 587)
           True
           """,
           'hidden': False,
@@ -188,7 +246,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(480, 912)
+          >>> is_swap(772, 297)
           True
           """,
           'hidden': False,
@@ -196,7 +254,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(241, 143)
+          >>> is_swap(186, 322)
           True
           """,
           'hidden': False,
@@ -212,7 +270,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(330, 671)
+          >>> is_swap(817, 708)
           True
           """,
           'hidden': False,
@@ -220,7 +278,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(485, 255)
+          >>> is_swap(994, 6)
           True
           """,
           'hidden': False,
@@ -228,7 +286,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(772, 48)
+          >>> is_swap(240, 850)
           True
           """,
           'hidden': False,
@@ -244,7 +302,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(237, 460)
+          >>> is_swap(192, 12)
           True
           """,
           'hidden': False,
@@ -268,7 +326,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(318, 774)
+          >>> is_swap(622, 216)
           True
           """,
           'hidden': False,
@@ -276,7 +334,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(752, 293)
+          >>> is_swap(906, 689)
           True
           """,
           'hidden': False,
@@ -284,7 +342,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(284, 109)
+          >>> is_swap(785, 57)
           True
           """,
           'hidden': False,
@@ -292,7 +350,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(862, 94)
+          >>> is_swap(250, 980)
           True
           """,
           'hidden': False,
@@ -300,7 +358,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(763, 145)
+          >>> is_swap(441, 104)
           True
           """,
           'hidden': False,
@@ -316,7 +374,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(751, 64)
+          >>> is_swap(306, 229)
           True
           """,
           'hidden': False,
@@ -324,7 +382,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(578, 658)
+          >>> is_swap(391, 728)
           False
           """,
           'hidden': False,
@@ -332,7 +390,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(547, 453)
+          >>> is_swap(584, 495)
           True
           """,
           'hidden': False,
@@ -340,7 +398,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(448, 249)
+          >>> is_swap(696, 646)
           True
           """,
           'hidden': False,
@@ -348,7 +406,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(293, 439)
+          >>> is_swap(287, 257)
           True
           """,
           'hidden': False,
@@ -356,7 +414,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(363, 844)
+          >>> is_swap(951, 941)
           True
           """,
           'hidden': False,
@@ -364,7 +422,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(943, 929)
+          >>> is_swap(97, 967)
           True
           """,
           'hidden': False,
@@ -372,7 +430,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(919, 557)
+          >>> is_swap(966, 69)
           True
           """,
           'hidden': False,
@@ -396,7 +454,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(270, 106)
+          >>> is_swap(435, 860)
           False
           """,
           'hidden': False,
@@ -412,7 +470,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(173, 571)
+          >>> is_swap(419, 753)
           False
           """,
           'hidden': False,
@@ -420,7 +478,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(892, 544)
+          >>> is_swap(270, 490)
           True
           """,
           'hidden': False,
@@ -428,7 +486,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(316, 411)
+          >>> is_swap(354, 642)
           True
           """,
           'hidden': False,
@@ -436,7 +494,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(584, 681)
+          >>> is_swap(479, 656)
           True
           """,
           'hidden': False,
@@ -476,7 +534,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(483, 865)
+          >>> is_swap(907, 987)
           True
           """,
           'hidden': False,
@@ -484,7 +542,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(278, 234)
+          >>> is_swap(822, 892)
           True
           """,
           'hidden': False,
@@ -492,7 +550,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(281, 279)
+          >>> is_swap(73, 713)
           True
           """,
           'hidden': False,
@@ -500,7 +558,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(666, 295)
+          >>> is_swap(37, 347)
           True
           """,
           'hidden': False,
@@ -508,7 +566,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(706, 254)
+          >>> is_swap(927, 799)
           True
           """,
           'hidden': False,
@@ -516,7 +574,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(696, 40)
+          >>> is_swap(950, 50)
           True
           """,
           'hidden': False,
@@ -524,7 +582,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(730, 706)
+          >>> is_swap(227, 27)
           True
           """,
           'hidden': False,
@@ -532,7 +590,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(66, 630)
+          >>> is_swap(432, 841)
           True
           """,
           'hidden': False,
@@ -540,7 +598,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(98, 296)
+          >>> is_swap(951, 91)
           True
           """,
           'hidden': False,
@@ -548,7 +606,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(577, 119)
+          >>> is_swap(530, 930)
           True
           """,
           'hidden': False,
@@ -580,7 +638,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(296, 725)
+          >>> is_swap(117, 575)
           False
           """,
           'hidden': False,
@@ -596,7 +654,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(279, 360)
+          >>> is_swap(985, 905)
           True
           """,
           'hidden': False,
@@ -604,7 +662,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(236, 240)
+          >>> is_swap(915, 539)
           True
           """,
           'hidden': False,
@@ -612,7 +670,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(439, 404)
+          >>> is_swap(203, 969)
           False
           """,
           'hidden': False,
@@ -628,7 +686,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(941, 11)
+          >>> is_swap(367, 337)
           True
           """,
           'hidden': False,
@@ -644,7 +702,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(394, 784)
+          >>> is_swap(146, 942)
           False
           """,
           'hidden': False,
@@ -652,7 +710,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(201, 830)
+          >>> is_swap(859, 137)
           False
           """,
           'hidden': False,
@@ -668,7 +726,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(610, 509)
+          >>> is_swap(385, 335)
           True
           """,
           'hidden': False,
@@ -676,7 +734,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(441, 167)
+          >>> is_swap(213, 186)
           True
           """,
           'hidden': False,
@@ -684,7 +742,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(310, 696)
+          >>> is_swap(250, 950)
           True
           """,
           'hidden': False,
@@ -692,7 +750,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(663, 465)
+          >>> is_swap(213, 186)
           True
           """,
           'hidden': False,
@@ -700,7 +758,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(259, 222)
+          >>> is_swap(902, 603)
           True
           """,
           'hidden': False,
@@ -708,7 +766,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(705, 824)
+          >>> is_swap(42, 801)
           True
           """,
           'hidden': False,
@@ -716,7 +774,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(499, 281)
+          >>> is_swap(892, 474)
           True
           """,
           'hidden': False,
@@ -748,7 +806,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(864, 428)
+          >>> is_swap(796, 99)
           False
           """,
           'hidden': False,
@@ -772,7 +830,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(552, 453)
+          >>> is_swap(417, 794)
           True
           """,
           'hidden': False,
@@ -780,7 +838,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(669, 626)
+          >>> is_swap(481, 14)
           True
           """,
           'hidden': False,
@@ -804,7 +862,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(521, 823)
+          >>> is_swap(0, 460)
           True
           """,
           'hidden': False,
@@ -812,7 +870,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(984, 808)
+          >>> is_swap(186, 253)
           True
           """,
           'hidden': False,
@@ -820,7 +878,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(118, 958)
+          >>> is_swap(297, 531)
           False
           """,
           'hidden': False,
@@ -836,7 +894,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(691, 949)
+          >>> is_swap(419, 105)
           False
           """,
           'hidden': False,
@@ -852,7 +910,7 @@ test = {
         },
         {
           'code': r"""
-          >>> is_swap(505, 59)
+          >>> is_swap(334, 34)
           True
           """,
           'hidden': False,

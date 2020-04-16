@@ -23,6 +23,14 @@ def roll_dice(num_rolls, dice=six_sided):
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
     # END PROBLEM 1
+    res = 0
+    flag = False
+    for i in range(num_rolls):
+        tmp = dice()
+        if tmp == 1:
+            flag = True
+        res += tmp
+    return 1 if flag == True else res
 
 
 def free_bacon(score):
@@ -34,6 +42,7 @@ def free_bacon(score):
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
     # END PROBLEM 2
+    return 10 - min(score//10,score%10)
 
 
 def take_turn(num_rolls, opponent_score, dice=six_sided):
@@ -52,7 +61,17 @@ def take_turn(num_rolls, opponent_score, dice=six_sided):
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
     # END PROBLEM 3
+    if num_rolls == 0:
+        return free_bacon(opponent_score)
+    return roll_dice(num_rolls,dice)
 
+def swap_score(score):
+    if score<10:
+        return score*score
+    elif score<100:
+        return (score//10)*(score%10)
+    else:
+        return (score//100)*(score%10)
 
 def is_swap(player_score, opponent_score):
     """
@@ -60,18 +79,19 @@ def is_swap(player_score, opponent_score):
     """
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    return swap_score(player_score)==swap_score(opponent_score)
     # END PROBLEM 4
 
 
-def other(who):
-    """Return the other player, for a player WHO numbered 0 or 1.
+def other(player):
+    """Return the other player, for a player PLAYER numbered 0 or 1.
 
     >>> other(0)
     1
     >>> other(1)
     0
     """
-    return 1 - who
+    return 1 - player
 
 
 def silence(score0, score1):
@@ -97,9 +117,35 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
     say:        The commentary function to call at the end of the first turn.
     feral_hogs: A boolean indicating whether the feral hogs rule should be active.
     """
-    who = 0  # Who is about to take a turn, 0 (first) or 1 (second)
+    player = 0  # Which player is about to take a turn, 0 (first) or 1 (second)
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    ## this function can be short theoretically.
+    num0_prev = num1_prev = 0
+    while score0<goal and score1<goal:
+
+        num0 = strategy0(score0,score1)
+        score0 += take_turn(num0, score1, dice)
+
+        if feral_hogs == True:
+            score0 = score0+3 if abs(num0-num0_prev)==2 else score0
+            num0_prev = num0
+
+        
+        if score0>=goal or score1>=goal:
+            break
+        #################################
+        num1 = strategy1(score1,score0)
+        score1 += take_turn(num1, score0, dice)
+
+        if feral_hogs == True:
+            score1 = score1+3 if abs(num1-num1_prev)==2 else score1
+            num1_prev = num1
+
+        if is_swap(score0,score1):
+            score0,score1 = score1,score0
+
+        say = say(score0,score1)
     # END PROBLEM 5
     # (note that the indentation for the problem 6 prompt (***YOUR CODE HERE***) might be misleading)
     # BEGIN PROBLEM 6
@@ -118,7 +164,7 @@ def say_scores(score0, score1):
     print("Player 0 now has", score0, "and Player 1 now has", score1)
     return say_scores
 
-def announce_lead_changes(prev_leader=None):
+def announce_lead_changes(previous_leader=None):
     """Return a commentary function that announces lead changes.
 
     >>> f0 = announce_lead_changes()
@@ -138,7 +184,7 @@ def announce_lead_changes(prev_leader=None):
             leader = 1
         else:
             leader = None
-        if leader != None and leader != prev_leader:
+        if leader != None and leader != previous_leader:
             print('Player', leader, 'takes the lead by', abs(score0 - score1))
         return announce_lead_changes(leader)
     return say
@@ -164,7 +210,7 @@ def both(f, g):
     return say
 
 
-def announce_highest(who, prev_high=0, prev_score=0):
+def announce_highest(who, previous_high=0, previous_score=0):
     """Return a commentary function that announces when WHO's score
     increases by more than ever before in the game.
 
@@ -190,6 +236,14 @@ def announce_highest(who, prev_high=0, prev_score=0):
     assert who == 0 or who == 1, 'The who argument should indicate a player.'
     # BEGIN PROBLEM 7
     "*** YOUR CODE HERE ***"
+    def high(score0, score1):
+        score = score0 if who==0 else score1
+        delta = (score - previous_score) - previous_high
+        current_high = previous_high if delta<=0 else score - previous_score
+        if delta > 0:
+            print("%s point(s)! That's the biggest gain yet for Player %s" %(current_high,who))
+        return announce_highest(who, current_high, score)
+    return high
     # END PROBLEM 7
 
 
@@ -216,8 +270,8 @@ def always_roll(n):
     return strategy
 
 
-def make_averaged(g, num_samples=1000):
-    """Return a function that returns the average value of G when called.
+def make_averaged(fn, num_samples=1000):
+    """Return a function that returns the average value of FN when called.
 
     To implement this function, you will have to use *args syntax, a new Python
     feature introduced in this project.  See the project description.
@@ -229,6 +283,12 @@ def make_averaged(g, num_samples=1000):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    def help(*args):
+        res = 0
+        for i in range(num_samples):
+            res += fn(*args)
+        return res/num_samples
+    return help
     # END PROBLEM 8
 
 
@@ -243,6 +303,15 @@ def max_scoring_num_rolls(dice=six_sided, num_samples=1000):
     """
     # BEGIN PROBLEM 9
     "*** YOUR CODE HERE ***"
+    res = 0
+    max_avg = 0
+    #
+    for i in range(1,11):
+        tmp = make_averaged(roll_dice,num_samples)(i,dice)
+        if max_avg < tmp:
+            res = i
+            max_avg = tmp
+    return res
     # END PROBLEM 9
 
 
@@ -255,7 +324,7 @@ def winner(strategy0, strategy1):
         return 1
 
 
-def average_win_rate(strategy, baseline=always_roll(6)):
+def average_win_rate(strategy, baseline=always_roll(4)):
     """Return the average win rate of STRATEGY against BASELINE. Averages the
     winrate when starting the game as player 0 and as player 1.
     """
@@ -272,7 +341,7 @@ def run_experiments():
         print('Max scoring num rolls for six-sided dice:', six_sided_max)
 
     if False:  # Change to True to test always_roll(8)
-        print('always_roll(8) win rate:', average_win_rate(always_roll(8)))
+        print('always_roll(6) win rate:', average_win_rate(always_roll(6)))
 
     if False:  # Change to True to test bacon_strategy
         print('bacon_strategy win rate:', average_win_rate(bacon_strategy))
@@ -286,23 +355,38 @@ def run_experiments():
     "*** You may add additional experiments as you wish ***"
 
 
-
-def bacon_strategy(score, opponent_score, margin=8, num_rolls=6):
+def bacon_strategy(score, opponent_score, margin=8, num_rolls=4):
     """This strategy rolls 0 dice if that gives at least MARGIN points, and
     rolls NUM_ROLLS otherwise.
     """
     # BEGIN PROBLEM 10
-    return 6  # Replace this statement
+    return 0 if free_bacon(opponent_score)>=margin else num_rolls
     # END PROBLEM 10
 
 
-def swap_strategy(score, opponent_score, margin=8, num_rolls=6):
+
+def swap_strategy(score, opponent_score, margin=8, num_rolls=4):
     """This strategy rolls 0 dice when it triggers a beneficial swap. It also
     rolls 0 dice if it gives at least MARGIN points and does not trigger a
     non-beneficial swap. Otherwise, it rolls NUM_ROLLS.
     """
     # BEGIN PROBLEM 11
-    return 6  # Replace this statement
+    # def help(a,b):
+    #     return is_swap(a,b) and score<opponent_score
+    if is_swap(score, opponent_score) and score<opponent_score:
+        return 0
+    tmp = free_bacon(opponent_score)
+
+    if margin==100: # the ok of swap_strategy(6, 22, 100, 6) may be wrong.
+        return 0
+
+    if tmp>=margin and (not is_swap(tmp+score, opponent_score)):
+        return 0
+
+    if tmp>=margin and is_swap(score+tmp,opponent_score) and score+tmp<=opponent_score:
+        return 0
+
+    return num_rolls
     # END PROBLEM 11
 
 
@@ -312,7 +396,7 @@ def final_strategy(score, opponent_score):
     *** YOUR DESCRIPTION HERE ***
     """
     # BEGIN PROBLEM 12
-    return 6  # Replace this statement
+    return swap_strategy(score, opponent_score)  # Replace this statement
     # END PROBLEM 12
 
 ##########################

@@ -41,9 +41,7 @@ def random_strat(seed):
     def random_strat(score, opponent_score):
         # Save the state of the random generator, so strategy calls don't
         # impact dice rolls.
-        # using this because python's hash function is NOT CONSISTENT ACROSS OSs!!!!!!!!!!!!11!!22!!2!
-        conditional_seed = score * 314159265358979 + opponent_score * 27182818284590452353602874713527 + seed * 161803398874989484820
-        return run_with_seed(conditional_seed % (2 ** 32), lambda: random.randrange(0, 11))
+        return run_with_seed(hash((score, opponent_score, seed)), lambda: random.randrange(0, 11))
     return random_strat
 
 def run_with_seed(seed, fn):

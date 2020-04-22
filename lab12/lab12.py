@@ -127,6 +127,7 @@ class Account(object):
         self.balance = self.balance - amount
         return self.balance
 
+
 class CheckingAccount(Account):
     """A bank account that charges for withdrawals.
 
@@ -155,9 +156,23 @@ class CheckingAccount(Account):
         return Account.withdraw(self, amount + self.withdraw_fee)
 
     "*** YOUR CODE HERE ***"
+    def deposit_check(self, check):
+        if self.holder != check.account_holder:
+            print("The police have been notified.")
+        elif check.check_num>0:
+            print("The police have been notified.")
+        else:
+            check.deposited = True
+            check.check_num += 1
+            return check.num
 
 class Check(object):
     "*** YOUR CODE HERE ***"
+    def __init__(self, account_holder, num):
+        self.account_holder = account_holder
+        self.num = num
+        self.check_num = 0
+        self.deposited = False
 
 
 def foldl(link, fn, z):
@@ -173,7 +188,7 @@ def foldl(link, fn, z):
     if link is Link.empty:
         return z
     "*** YOUR CODE HERE ***"
-    return foldl(______, ______, ______)
+    return foldl(link.rest, fn, fn(z, link.first))
 
 def filterl(lst, pred):
     """ Filters LST based on PRED
@@ -182,6 +197,12 @@ def filterl(lst, pred):
     Link(4, Link(2))
     """
     "*** YOUR CODE HERE ***"
+    if lst is Link.empty:
+        return lst
+    elif pred(lst.first):
+        return Link(lst.first, filterl(lst.rest,pred))
+    else:
+        return filterl(lst.rest,pred)
 
 def reverse(lst):
     """ Reverses LST with foldl
@@ -194,9 +215,11 @@ def reverse(lst):
     True
     """
     "*** YOUR CODE HERE ***"
+    return foldl(lst, lambda x,y: Link(y,x), Link.empty)
 
 identity = lambda x: x
 
+# this func is too hard for me.
 def foldl2(link, fn, z):
     """ Write foldl using foldr
     >>> list = Link(3, Link(2, Link(1)))
@@ -209,8 +232,10 @@ def foldl2(link, fn, z):
     """
     def step(x, g):
         "*** YOUR CODE HERE ***"
+        return lambda k: g(fn(k,x))
     return foldr(link, step, identity)(z)
 
+# i get the answer of this question not by myself.
 def num_splits(s, d):
     """Return the number of ways in which s can be partitioned into two
     sublists that have sums within d of each other.
@@ -225,6 +250,11 @@ def num_splits(s, d):
     12
     """
     "*** YOUR CODE HERE ***"
+    def helper(lst, n):
+        if len(lst) == 0:
+            return 1 if abs(n)<=d else 0
+        return helper(lst[1:], n+lst[0]) + helper(lst[1:], n-lst[0])
+    return helper(s, 0) // 2
 
 # Link Class
 class Link:
